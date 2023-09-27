@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">prueba</string>
+    <string name="saludo">Hola Mundo Secundario</string>
+    <string name="boton_pulsa">Pulsa aqui</string>
 </resources>
