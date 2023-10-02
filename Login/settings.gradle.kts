@@ -13,7 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "prueba"
-include(":pruebaKotlin")
-include(":tema1_Ejercicio1")
- 
+rootProject.name = "LogingScreen"
+include(":app")
