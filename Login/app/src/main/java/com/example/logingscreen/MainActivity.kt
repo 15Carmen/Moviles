@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.logingscreen.databinding.LoginBinding
+import com.example.logingscreen.databinding.WelcomeBinding
 
 
 class MainActivity : Activity() {
@@ -23,6 +24,9 @@ class MainActivity : Activity() {
                     "¡Me has pulsado!",
                     Toast.LENGTH_SHORT
                 ).show()
+
+                val welcomeBinding = WelcomeBinding.inflate(layoutInflater)
+                setContentView(welcomeBinding.root)
             }
 
         })
