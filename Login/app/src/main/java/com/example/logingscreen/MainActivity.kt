@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.logingscreen.databinding.LoginBinding
+import com.example.logingscreen.databinding.StopBinding
 import com.example.logingscreen.databinding.WelcomeBinding
 
 
@@ -31,8 +32,8 @@ class MainActivity : Activity() {
 
         })
 
-
     }
+
 
 
 
