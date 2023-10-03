@@ -1,18 +1,35 @@
 package com.example.logingscreen
 
+import android.app.Activity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import androidx.activity.ComponentActivity
-import androidx.core.widget.doAfterTextChanged
+import android.view.View
+import android.widget.Toast
+import com.example.logingscreen.databinding.LoginBinding
 
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val loginBinding = LoginBinding.inflate(layoutInflater)
+        setContentView(loginBinding.root)
+        loginBinding.miBoton.text = "Pulsa aqui"
+
+        loginBinding.miBoton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val toast = Toast.makeText(
+                    applicationContext,
+                    "¡Me has pulsado!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+        })
+
 
     }
+
+
 
 }
