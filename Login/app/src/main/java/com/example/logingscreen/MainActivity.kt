@@ -11,6 +11,7 @@ import com.example.logingscreen.databinding.WelcomeBinding
 
 class MainActivity : Activity() {
 
+
     var nombre = ""
     var parar = false
 
@@ -55,7 +56,7 @@ class MainActivity : Activity() {
 
         if (parar){
             setContentView(bindingWelcome.root)
-            bindingWelcome.txtWelcome.text = "Bienvenido de vuelta, $nombre"
+            bindingWelcome.txtWelcome.text = "Bienvenido de vuelta " + nombre
 
             parar = false
 
@@ -71,7 +72,7 @@ class MainActivity : Activity() {
 
                 setContentView(bindingWelcome.root)
 
-                bindingWelcome.txtWelcome.text = "Bienvenido de vuelta, $nombre"
+                bindingWelcome.txtWelcome.text = "Bienvenido de vuelta " + nombre
             }
         }
 
