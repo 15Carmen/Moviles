@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="#FEFEFE">
 
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="342dp"
-        android:layout_height="313dp"
+        android:layout_width="267dp"
+        android:layout_height="298dp"
         android:src="@drawable/descarga"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
