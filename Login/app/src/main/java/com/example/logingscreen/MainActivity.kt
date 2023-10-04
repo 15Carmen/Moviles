@@ -1,40 +1,37 @@
 package com.example.logingscreen
 
-import android.app.Activity
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.logingscreen.databinding.BienvenidaBinding
 import com.example.logingscreen.databinding.LoginBinding
-import com.example.logingscreen.databinding.StopBinding
-import com.example.logingscreen.databinding.WelcomeBinding
 
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val loginBinding = LoginBinding.inflate(layoutInflater)
-        setContentView(loginBinding.root)
-        loginBinding.miBoton.text = "Pulsa aqui"
+        val binding = LoginBinding.inflate(layoutInflater)
 
-        loginBinding.miBoton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val toast = Toast.makeText(
-                    applicationContext,
-                    "¡Me has pulsado!",
-                    Toast.LENGTH_SHORT
-                ).show()
+        setContentView(binding.root)
 
-                val welcomeBinding = WelcomeBinding.inflate(layoutInflater)
-                setContentView(welcomeBinding.root)
+        binding.btnAcceder.setOnClickListener {
+            if(binding.campoUsuario.text.toString().isEmpty() || binding.campoContrasena.text.toString().isEmpty()){
+                Toast.makeText(applicationContext, "Error al iniciar sesión", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this , Bienvenida::class.java)
+                intent.putExtra("usuario", binding.campoUsuario.text.toString())
+                startActivity(intent)
+                Toast.makeText(applicationContext, "Iniciando sesión..." + binding.campoUsuario.text.toString(), Toast.LENGTH_SHORT).show()
             }
-
-        })
-
+        }
     }
-
-
 
 
 }
