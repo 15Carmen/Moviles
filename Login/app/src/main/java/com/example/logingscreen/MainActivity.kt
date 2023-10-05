@@ -104,39 +104,5 @@ class MainActivity : Activity() {
         Log.d("TAG", "Destroy")
     }
 
-    /*
-    override fun onDestroy() {
-        super.onDestroy()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channelId = "mi_canal_id"
-            val channelName = "Mi Canal de Notificación"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(channelId, channelName, importance)
-
-            val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(channel)
-        }
-
-        // Crea un intent para abrir una actividad cuando se toque la notificación
-        val intent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-
-        // Crea la notificación
-        val notificationBuilder = NotificationCompat.Builder(this, "mi_canal_id")
-            .setSmallIcon(R.drawable.ic_notificacion)
-            .setContentTitle("Cierre de sesión")
-            .setContentText("Se ha cerrado la sesión de $nombre")
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true) // Cierra la notificación al tocarla
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        // Muestra la notificación
-        val notificationManager = getSystemService(NotificationManager::class.java)
-        notificationManager.notify(1, notificationBuilder.build())
-
-    }
-
-
-*/
 
 }
