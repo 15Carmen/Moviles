@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="40dp">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="69dp"
+        android:layout_height="68dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#B395E8"
+        android:src="@drawable/icons8_chevron_izquierda_en_c_rculo_50"
+        android:textSize="21sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/intrDatos"
+        android:layout_width="248dp"
+        android:layout_height="356dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="156dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/Calculadora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:text="Calculadora"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/primerFactor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Primer factor"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/numPrimerFact"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="8"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            />
+
+        <TextView
+            android:id="@+id/segundoFactor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Segundo factor"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/numSegundoFact"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="8"
+            android:gravity="center"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resultado"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/campoResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intrDatos">
+
+        <Button
+            android:id="@+id/btnSuma"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B294E7"
+            android:text="+"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnResta"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B294E7"
+            android:text="-"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnMulti"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B193E6"
+            android:text="X"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnDiv"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B092E5"
+            android:text="%"
+            android:textSize="25sp" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
