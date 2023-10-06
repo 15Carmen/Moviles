@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "prueba"
 include(":pruebaKotlin")
 include(":tema1_Ejercicio1")
- 
+include(":app")
