@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,6 +17,7 @@
         android:backgroundTint="#B395E8"
         android:src="@drawable/icons8_chevron_izquierda_en_c_rculo_50"
         android:textSize="21sp"
+        android:contentDescription="NULL"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,8 +26,8 @@
         android:layout_width="248dp"
         android:layout_height="356dp"
         android:layout_gravity="center"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="188dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,16 +47,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Primer factor"
+            android:textColor="#656464"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/numPrimerFact"
+            android:id="@+id/primerFactorInput"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="8"
             android:gravity="center"
-            android:inputType="numberDecimal"
-            />
+            android:hint="number 1"
+            android:inputType="number|numberDecimal|numberSigned" />
 
         <TextView
             android:id="@+id/segundoFactor"
@@ -64,22 +67,23 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/numSegundoFact"
+            android:id="@+id/segundoFactorInput"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="8"
             android:gravity="center"
-            android:inputType="numberDecimal" />
+            android:hint="number 2"
+            android:inputType="number|numberDecimal|numberSigned" />
 
         <TextView
-            android:id="@+id/res"
+            android:id="@+id/txtResultado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Resultado"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/campoResultado"
+            android:id="@+id/resultadoOutput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -126,7 +130,7 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#B092E5"
-            android:text="%"
+            android:text="/"
             android:textSize="25sp" />
 
 

@@ -9,7 +9,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.example.calculadora.databinding.CalculadoraBinding
 import com.example.calculadora.databinding.LoginBinding
@@ -18,266 +17,247 @@ import com.example.calculadora.databinding.PauseBinding
 
 class MainActivity : ComponentActivity() {
 
-
-    class MainActivity : AppCompatActivity() {
-
-        var parar = false
-        var nombre = ""
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-
-            Log.i("act", "on create")
-
-        }
-
-        override fun onStart() {
-
-            super.onStart()
-
-            Log.i("act", "on start")
-
-        }
-
-        override fun onResume() {
-
-            super.onResume()
-
-            Log.i("act", "on resume")
+    // Declaro las variables globales
+    var parar = false   //Variable booleana que usaremos para saber si la aplicación está en pausa o no
 
 
-            val loginBinding = LoginBinding.inflate(layoutInflater)
-            val calculadoraBinding = CalculadoraBinding.inflate(layoutInflater)
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-            setContentView(loginBinding.root)
+        super.onCreate(savedInstanceState)
+        Log.d("TAG", "Create")
 
-            var boton = loginBinding.btnAcceder
-            var vuelta = calculadoraBinding.btnBack
-            var suma = calculadoraBinding.btnSuma
-            var resta = calculadoraBinding.btnResta
-            var mult = calculadoraBinding.btnMulti
-            var div = calculadoraBinding.btnDiv
-            var numUno = calculadoraBinding.numPrimerFact.text.toString()
-            var numDos = calculadoraBinding.numSegundoFact.text.toString()
+        //Declaramos los bindings
+        val bindingCalculadora = CalculadoraBinding.inflate(layoutInflater)
 
-            if (parar) {
-
-                setContentView(calculadoraBinding.root)
-
-                parar = false
+        //Mostramos primero la vista de la calculadora
+        setContentView(bindingCalculadora.root)
 
 
-            } else {
+    }
 
-                //El botón que va del login hacia la calculadora
-                boton.setOnClickListener {
+    override fun onStart() {
+        super.onStart()
+        Log.d("TAG", "Start")
 
-                    val toast = Toast.makeText(
-                        applicationContext,
-                        "Palante",
+        //Creamos un binding de la pagina de bienvenida
+        val bindingCalculadora = CalculadoraBinding.inflate(layoutInflater)
+        //Cuando la aplicacion esté en funcionamiento mostramos la pantalla de calculadora
+        setContentView(bindingCalculadora.root)
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        Log.d("TAG", "Restart")
+
+        //Cuando se reanude la aplicación mostramos una notificación de bienvenida en la parte de abajo de la pantalla
+        Toast.makeText(applicationContext, "Bienvenido de vuelta", Toast.LENGTH_SHORT).show()
+
+        //Creamos un binding de la pantalla de bienvenida
+        val bindingCalculadora = CalculadoraBinding.inflate(layoutInflater)
+        //Cuando se reinicie la app mostramos la pantalla de bienvenida
+        setContentView(bindingCalculadora.root)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("TAG", "Resume")
+
+        //Creamos un binding tanto de la pantalla de login como de la de calculadora
+        val bindingLogin = LoginBinding.inflate(layoutInflater)
+        val bindingCalculadora = CalculadoraBinding.inflate(layoutInflater)
+
+        setContentView(bindingLogin.root)
+
+        //Si la app estaba en pausa
+        if (parar) {
+            //Mostramos la pantalla de calculadora
+            setContentView(bindingCalculadora.root)
+
+            //Indicamos que parar ya es falso
+            parar = false
+
+        } else { //Si la app no estaba en pausa
+
+            //Mostramos la pantalla de login
+            setContentView(bindingLogin.root)
+
+            //Declaramos las variables
+            var res = 0.0   //Resultado de la operación
+            var boton = bindingLogin.btnAcceder
+
+            /**
+             * Acción que se realiza al clicar el boton de acceso
+             */
+            boton.setOnClickListener {
+
+                //Mostramos la pantalla de calculadora
+                setContentView(bindingCalculadora.root)
+
+            }
+
+            /**
+             * Acción que se realiza al clicar el botón de atrás
+             */
+            bindingCalculadora.btnBack.setOnClickListener {
+                //Mostramos la pantalla del login
+                setContentView(bindingLogin.root)
+            }
+
+            /**
+             * Acción que se realiza al clicar el boton suma
+             */
+            bindingCalculadora.btnSuma.setOnClickListener {
+                val num1 = bindingCalculadora.primerFactorInput.text.toString()     //Guardamos aqui el primer numero introducido
+                val num2 = bindingCalculadora.segundoFactorInput.text.toString()    //Guardamos el segundo numero introducido
+
+                //Si ninguno de los campos numero está vacio
+                if (num1.isNotBlank() && num2.isNotBlank()) {
+                    //Se realiza la operación
+                    res = (num1.toDouble() + num2.toDouble())
+                    //Mostramos el resultado en la pantalla
+                    bindingCalculadora.resultadoOutput.text = "$res"
+
+                } else {    //Si alguno de los campos está vacío
+                    //Mostramos que el resultado es 0 y lanzamos un mensaje de error
+                    bindingCalculadora.resultadoOutput.text = "0"
+                    Toast.makeText(
+                        this,
+                        "Para hacer la operación se necesitan dos valores",
                         Toast.LENGTH_SHORT
                     ).show()
-
-                    //vista de la calculadora
-                    setContentView(calculadoraBinding.root)
-
-
-                    //botón que va de la calculadora al login
-                    vuelta.setOnClickListener() {
-
-                        val toast = Toast.makeText(
-                            applicationContext,
-                            "Patrás",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        setContentView(loginBinding.root)
-
-                    }
-
-                    var numUno = calculadoraBinding.numPrimerFact.text.toString()
-                    var numDos = calculadoraBinding.numSegundoFact.text.toString()
-
-                    //botón que suma
-                    suma.setOnClickListener() {
-
-                        var res = 0.0
-
-                        if (numUno.isEmpty()) {
-
-                            Log.i("act", "el primer num era 0")
-                            var uno = numUno.toDouble()
-                            uno = 0.0
-
-                            res = (uno.toDouble()) + (numDos.toDouble())
-
-
-                        } else if (numDos.isEmpty()) {
-
-                            Log.i("act", "el segundo num era 0")
-                            var dos = numDos.toDouble()
-
-                            dos = 0.0
-
-                            res = (numUno.toDouble()) + (dos.toDouble())
-
-
-                        } else {
-
-                            Log.i("act", "suma")
-
-                            res = (numUno.toDouble()) + (numDos.toDouble())
-                        }
-
-
-                        calculadoraBinding.res.text = "$res"
-                    }
-
-                    //botón que resta
-                    resta.setOnClickListener() {
-
-                        var res = 0.0
-
-                        if (numUno.isEmpty()) {
-
-                            Log.i("act", "el primer num era 0")
-                            var uno = numUno.toDouble()
-                            uno = 0.0
-
-                            res = (uno.toDouble()) - (numDos.toDouble())
-
-
-                        } else if (numDos.isEmpty()) {
-
-                            Log.i("act", "el segundo num era 0")
-                            var dos = numDos.toDouble()
-
-                            dos = 0.0
-
-                            res = (numUno.toDouble()) - (dos.toDouble())
-
-
-                        } else {
-
-                            Log.i("act", "suma")
-
-                            res = (numUno.toDouble()) - (numDos.toDouble())
-                        }
-
-
-                        calculadoraBinding.res.text = "$res"
-                    }
-
-                    //botón que suma
-                    mult.setOnClickListener() {
-
-                        var res = 0.0
-
-                        if (numUno.isEmpty()) {
-
-                            Log.i("act", "el primer num era 0")
-                            var uno = numUno.toDouble()
-                            uno = 0.0
-
-                            res = (uno.toDouble()) * (numDos.toDouble())
-
-
-                        } else if (numDos.isEmpty()) {
-
-                            Log.i("act", "el segundo num era 0")
-                            var dos = numDos.toDouble()
-
-                            dos = 0.0
-
-                            res = (numUno.toDouble()) * (dos.toDouble())
-
-
-                        } else {
-
-                            Log.i("act", "suma")
-
-                            res = (numUno.toDouble()) * (numDos.toDouble())
-                        }
-
-
-                        calculadoraBinding.res.text = "$res"
-                    }
-
-
                 }
             }
 
-        }
+            /**
+             * Acción que se realiza al clicar el boton resta
+             */
+            bindingCalculadora.btnResta.setOnClickListener {
+                val num1 = bindingCalculadora.primerFactorInput.text.toString()     //Guardamos aqui el primer numero introducido
+                val num2 = bindingCalculadora.segundoFactorInput.text.toString()    //Guardamos el segundo numero introducido
+                //Si ninguno de los campos numero está vacio
+                if (num1.isNotBlank() && num2.isNotBlank()) {
+                    //Se realiza la operación
+                    res = (num1.toDouble() - num2.toDouble())
+                    //Mostramos el resultado en la pantalla
+                    bindingCalculadora.resultadoOutput.text = "$res"
 
-        override fun onPause() {
-            super.onPause()
-
-            Log.i("act", "onpause")
-            Toast.makeText(applicationContext, "He parado", Toast.LENGTH_SHORT).show()
-
-            val pausa = PauseBinding.inflate(layoutInflater)
-            setContentView(pausa.root)
-
-            parar = true
-
-
-        }
-
-        override fun onStop() {
-            super.onStop()
-            Log.i("actividad", "on stop")
-
-            onRestart()
-
-        }
-
-        override fun onRestart() {
-            super.onRestart()
-
-            Log.i("act", "onRestrart")
-
-            Toast.makeText(applicationContext, "Bienvenido de vuelta", Toast.LENGTH_SHORT).show()
-
-
-            val calcB =
-                com.example.calculadora.databinding.CalculadoraBinding.inflate(layoutInflater)
-            setContentView(calcB.root)
-
-
-        }
-
-        override fun onDestroy() {
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channelId = "mi_canal_id"
-                val channelName = "Mi Canal de Notificación"
-                val importance = NotificationManager.IMPORTANCE_DEFAULT
-                val channel = NotificationChannel(channelId, channelName, importance)
-
-                val notificationManager = getSystemService(NotificationManager::class.java)
-                notificationManager.createNotificationChannel(channel)
+                } else {    //Si alguno de los campos está vacío
+                    //Mostramos que el resultado es 0 y lanzamos un mensaje de error
+                    bindingCalculadora.resultadoOutput.text = "0"
+                    Toast.makeText(
+                        this,
+                        "Para hacer la operación se necesitan dos valores",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
 
-            // Crea un intent para abrir una actividad cuando se toque la notificación
-            val intent = Intent(this, MainActivity::class.java)
-            val pendingIntent =
-                PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+            /**
+             * Acción que se realiza al clicar el boton multiplicación
+             */
+            bindingCalculadora.btnMulti.setOnClickListener {
+                val num1 = bindingCalculadora.primerFactorInput.text.toString()     //Guardamos aqui el primer numero introducido
+                val num2 = bindingCalculadora.segundoFactorInput.text.toString()    //Guardamos el segundo numero introducido
+                //Si ninguno de los campos numero está vacio
+                if (num1.isNotBlank() && num2.isNotBlank()) {
+                    //Se realiza la operación
+                    res = (num1.toDouble() * num2.toDouble())
+                    //Mostramos el resultado en la pantalla
+                    bindingCalculadora.resultadoOutput.text = "$res"
 
-            // Crea la notificación
-            val notificationBuilder = NotificationCompat.Builder(this, "mi_canal_id")
-                .setSmallIcon(R.drawable.icons8_recordatorios_de_citas_30)
-                .setContentTitle("Cierre de sesión")
-                .setContentText("Se ha cerrado la sesión de $nombre")
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true) // Cierra la notificación al tocarla
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                } else {    //Si alguno de los campos está vacío
+                    //Mostramos que el resultado es 0 y lanzamos un mensaje de error
+                    bindingCalculadora.resultadoOutput.text = "0"
+                    Toast.makeText(
+                        this,
+                        "Para hacer la operación se necesitan dos valores",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
 
-            // Muestra la notificación
-            val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.notify(1, notificationBuilder.build())
+            /**
+             * Acción que se realiza al clicar el boton división
+             */
+            bindingCalculadora.btnDiv.setOnClickListener {
+                val num1 = bindingCalculadora.primerFactorInput.text.toString()     //Guardamos aqui el primer numero introducido
+                val num2 = bindingCalculadora.segundoFactorInput.text.toString()    //Guardamos el segundo numero introducido
+                //Si ninguno de los campos numero está vacio
+                if (num1.isNotBlank() && num2.isNotBlank()) {
+                    //Se realiza la operación
+                    res = (num1.toDouble() / num2.toDouble())
+                    //Mostramos el resultado en la pantalla
+                    bindingCalculadora.resultadoOutput.text = "$res"
 
-            super.onDestroy()
+                } else {    //Si alguno de los campos está vacío
+                    //Mostramos que el resultado es 0 y lanzamos un mensaje de error
+                    bindingCalculadora.resultadoOutput.text = "0"
+                    Toast.makeText(
+                        this,
+                        "Para hacer la operación se necesitan dos valores",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("TAG", "Pause")
+
+        //Mostramos una notificacion en la parte inferior de la pantalla indicando que la app se enccuentra pausada
+        Toast.makeText(applicationContext, "Aplicacion en pausa", Toast.LENGTH_SHORT).show()
+
+        //Creamos un binding de la pantalla de pausa
+        val pauseBinding = PauseBinding.inflate(layoutInflater)
+        //Mostramos la pantalla de pausa
+        setContentView(pauseBinding.root)
+
+        //Indicamos que la app está en pausa
+        parar = true
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TAG", "Stop")
+    }
+
+
+    override fun onDestroy() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = "mi_canal_id"
+            val channelName = "Mi Canal de Notificación"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, channelName, importance)
+
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // Crea un intent para abrir una actividad cuando se toque la notificación
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        // Crea la notificación
+        val notificationBuilder = NotificationCompat.Builder(this, "mi_canal_id")
+            .setSmallIcon(R.drawable.icons8_recordatorios_de_citas_30)
+            .setContentTitle("Cierre de sesión")
+            .setContentText("Se ha cerrado la sesión")
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true) // Cierra la notificación al tocarla
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        // Muestra la notificación
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.notify(1, notificationBuilder.build())
+
+        super.onDestroy()
     }
 }
+
 

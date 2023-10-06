@@ -3,8 +3,8 @@
     <item name="intrDatos" type="id" />
     <item name="Calculadora" type="id" />
     <item name="primerFactor" type="id" />
-    <item name="numPrimerFact" type="id" />
+    <item name="primerFactorInput" type="id" />
     <item name="segundoFactor" type="id" />
-    <item name="numSegundoFact" type="id" />
-    <item name="res" type="id" />
+    <item name="segundoFactorInput" type="id" />
+    <item name="txtResultado" type="id" />
 </resources>
