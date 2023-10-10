@@ -1,6 +1,5 @@
 package com.example.logingscreen
 
-import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,13 +8,14 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.example.logingscreen.databinding.LoginBinding
 import com.example.logingscreen.databinding.PauseBinding
 import com.example.logingscreen.databinding.WelcomeBinding
 
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
 
     // Declaro las variables globales
@@ -91,14 +91,11 @@ class MainActivity : Activity() {
             //Cuando se clique el boton de la pantalla de login
             boton.setOnClickListener {
 
-                //Mostramos una notificación de bienvenida en la parte de abajo de la pantalla
-                Toast.makeText(applicationContext, "Hello", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ControlActivity::class.java)
+                intent.putExtra("usuario", bindingLogin.userInput.text.toString())
+                intent.putExtra("password", bindingLogin.passwordInput.text.toString())
+                startActivity(intent)
 
-                //Mostramos la pantalla de bienvenida
-                setContentView(bindingWelcome.root)
-
-                //Cambiamos el mensaje de la pantalla para que de la bienvenida al usuario por su nombre
-                bindingWelcome.txtWelcome.text = "Bienvenido de vuelta $nombre"
             }
         }
 
