@@ -5,7 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ejemplorv.databinding.ItemContactoBinding
 
-class ContactosAdapter(private val contactos: List<Contacto>) :
+class ContactosAdapter(private val contactos: List<Contacto>,
+                       private val contactoPulsadoListener: ContactoPulsadoListener) :
     RecyclerView.Adapter<ContactosAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemContactoBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -28,5 +29,10 @@ class ContactosAdapter(private val contactos: List<Contacto>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(contactos[position])
+
+        holder.itemView.setOnClickListener{
+            contactoPulsadoListener.contactoPulsado(contactos[position])
+        }
     }
+
 }

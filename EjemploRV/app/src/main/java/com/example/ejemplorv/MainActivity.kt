@@ -1,5 +1,7 @@
 package com.example.ejemplorv
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ejemplorv.databinding.ActivityMainBinding
@@ -37,8 +39,20 @@ class MainActivity : AppCompatActivity() {
                 Contacto("Pedro", "612345672"),
                 Contacto("Carla", "623452345"),
                 Contacto("Antonio", "672381234"),
-            )
+            ),
+
+            object :ContactoPulsadoListener{
+                override fun contactoPulsado(contacto: Contacto) {
+                    val dial = Intent(
+                        Intent.ACTION_DIAL,
+                        Uri.parse("tel: " + contacto.tfno)
+                    )
+                    startActivity(dial)
+                }
+            }
+
         )
+
 
     }
 }
