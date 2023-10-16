@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="txtJug2" type="id" />
+    <item name="btnNoJugarJug1" type="id" />
+    <item name="btnNoJugarJug2" type="id" />
+    <item name="button3" type="id" />
 </resources>

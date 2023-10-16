@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import com.example.sieteymedia.databinding.ActivityMainBinding
 import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.sieteymedia.databinding.ActivityJuegoBinding
 
@@ -66,7 +65,7 @@ class MainActivity : ComponentActivity() {
                         puntosActJug1 = sumaPuntos(puntosActJug1)
 
                         //Mostramos los puntos actuales del jugador1
-                        bindingJuego.puntosJug1.text = "Puntos: $puntosActJug1"
+                        bindingJuego.puntosJug1.text = "Puntos actuales de $jugador1: $puntosActJug1"
 
                         //Si los puntos del jugador 1 son mayores a 7.5
                         if (puntosActJug1 > 7.5){
@@ -117,7 +116,7 @@ class MainActivity : ComponentActivity() {
                         puntosActJug2 = sumaPuntos(puntosActJug2)
 
                         //Mostramos los puntos actuales del jugador1
-                        bindingJuego.puntosJug2.text = "Puntos: $puntosActJug2"
+                        bindingJuego.puntosJug2.text = "Puntos actuales de $jugador2: $puntosActJug2"
 
                         //Si los puntos del jugador 2 son mayores a 7.5
                         if (puntosActJug2 > 7.5){
@@ -150,6 +149,7 @@ class MainActivity : ComponentActivity() {
 
                     //Mostramos quién ha ganado
                     bindingJuego.turnoJug.text = "$textoGanador"
+
                 }
             }
         }
@@ -192,11 +192,11 @@ class MainActivity : ComponentActivity() {
         //Si el jugador 1 tiene más puntos que el 2 pero no se ha pasado de 7.5 o el jugador 2 se ha pasado de 7.5 y el jugador 1 no
         if ((puntosJug1 > puntosJug2 && puntosJug1 <= 7.5) || (puntosJug1 <= 7.5 && puntosJug2 > 7.5)){
             //Gana el jugador 1
-            ganador = "Ha ganado $nombreJug1"
+            ganador = "ENHORABUENA! Ha ganado $nombreJug1"
         }else //Si el jugador 2 tiene más puntos que el 1 pero no se pasa de 7.5 o el jugador 1 se ha pasado de 7.5 y el jugador 2 no
             if ((puntosJug1 < puntosJug2 && puntosJug2 <= 7.5) || (puntosJug2 <= 7.5 && puntosJug1 > 7.5)) {
                 //Gana el jugador 2
-                ganador = "Ha ganado $nombreJug2"
+                ganador = "ENHORABUENA! Ha ganado $nombreJug2"
         } else //Si ambos se pasan de 7.5 o ambos tienen la misma cantidad de puntos
             if ((puntosJug1 > 7.5 && puntosJug2 > 7.5) || puntosJug1 == puntosJug2) {
                 //No gana ninguno, ambos son malísimos
