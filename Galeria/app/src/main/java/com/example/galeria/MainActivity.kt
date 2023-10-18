@@ -4,39 +4,46 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.galeria.databinding.ActivityGaleriaBinding
+import com.example.galeria.databinding.ItemFotosBinding
 
 
 class MainActivity : ComponentActivity() {
-
-    private val COLUMNAS = 3
-    val galeriaAdapter : FotosAdapter = FotosAdapter()
-    val fotosList = ArrayList<Fotos>()
-
-    lateinit var binding : ActivityGaleriaBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityGaleriaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val fotosBinding = ActivityGaleriaBinding.inflate(layoutInflater)
+        setContentView(fotosBinding.root)
 
-        cargarImagenes()
-    }
+        fotosBinding.vistaFoto.adapter = FotosAdapter(
 
-    private fun cargarImagenes() {
-        galeriaAdapter.AdaptadorFotos(fotosList, this)
-        binding.recycleView.layoutManager = GridLayoutManager(this, COLUMNAS)
-        binding.recycleView.adapter = galeriaAdapter
-        galeriaAdapter.notifyDataSetChanged()
+            listOf(
+                /*Fotos(""),
+                Fotos(""),
+                Fotos("")
+                */
+                Fotos("https://loremflickr.com/320/240?random=2"),
+                Fotos("https://loremflickr.com/320/240?random=3"),
+                Fotos("https://loremflickr.com/320/240?random=4"),
+                Fotos("https://loremflickr.com/320/240?random=5"),
+                Fotos("https://loremflickr.com/320/240?random=6"),
+                Fotos("https://loremflickr.com/320/240?random=7"),
+                Fotos("https://loremflickr.com/320/240?random=8"),
+                Fotos("https://loremflickr.com/320/240?random=9"),
+                Fotos("https://loremflickr.com/320/240?random=10"),
+                Fotos("https://loremflickr.com/320/240?random=11"),
+                Fotos("https://loremflickr.com/320/240?random=12"),
+                Fotos("https://loremflickr.com/320/240?random=13"),
+                Fotos("https://loremflickr.com/320/240?random=14"),
 
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=1"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=2"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=3"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=4"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=5"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=6"))
-        fotosList.add(Fotos("https://loremflickr.com/320/240?random=7"))
-        galeriaAdapter.notifyDataSetChanged()
+                )
+            ,
+
+            object : FotoPulsadaListener{
+                override fun fotoPulsada(fotos: Fotos) {
+                   
+                }
+            }
+        )
 
     }
 }

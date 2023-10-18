@@ -11,10 +11,12 @@ class FotosAdapter (private val fotos: List<Fotos>, private val fotoPulsadaListe
 
     class ViewHolder(val binding: ItemFotosBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(fotos: Fotos) {
-            Glide
+            /*Glide
                 .with(binding.root.context)
                 .load(fotos.imagenMiniUrl)
-                .into(binding.fotito);
+                .into(binding.fotito);*/
+
+            binding.fotito.setImageResource(R.drawable.michi_gafas)
         }
 
 
