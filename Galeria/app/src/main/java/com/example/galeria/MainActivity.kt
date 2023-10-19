@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 
             object : FotoPulsadaListener{
                 override fun fotoPulsada(fotos: Fotos) {
-                   
+
                 }
             }
         )
