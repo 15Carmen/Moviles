@@ -196,16 +196,15 @@ fun GameScreen(modifier: Modifier = Modifier) {
                             eleccionMaquina =
                                 numeroRandom() //La máquina elegirá un arma random entre 1 y 3
 
-                            //Switch-case del ganador entre las armas escogidas
-                            //Se llama a una función que determina el ganador y devuelve:
-                            // 0 para empate, 1 para victoria jugador, 2 para victoria máquina
+                            //Switch que declarará quien gana el punto o si es empate muestra un
+                            // mensaje indicandolo
                             when (ganador(eleccionJugador, eleccionMaquina)) {
                                 0 -> Toast
                                     .makeText(context, "Empate", Toast.LENGTH_SHORT)
                                     .show()
 
-                                1 -> puntosMaquina++ //La maquina suma 1 punto
-                                2 -> puntosJugador++ //El jugador suma 1 punto
+                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
                             }
                         }
                 )
@@ -221,16 +220,15 @@ fun GameScreen(modifier: Modifier = Modifier) {
                             eleccionMaquina =
                                 numeroRandom() //La máquina elegirá un arma random entre 1 y 3
 
-                            //Switch-case del ganador entre las armas escogidas
-                            //Se llama a una función que determina el ganador y devuelve:
-                            // 0 para empate, 1 para victoria jugador, 2 para victoria máquina
+                            //Switch que declarará quien gana el punto o si es empate muestra un
+                            // mensaje indicandolo
                             when (ganador(eleccionJugador, eleccionMaquina)) {
                                 0 -> Toast
                                     .makeText(context, "Empate", Toast.LENGTH_SHORT)
                                     .show()
 
-                                1 -> puntosMaquina += 1 //La maquina suma 1 punto
-                                2 -> puntosJugador += 1 //El jugador suma 1 punto
+                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
                             }
                         }
                 )
@@ -246,16 +244,15 @@ fun GameScreen(modifier: Modifier = Modifier) {
                             eleccionMaquina =
                                 numeroRandom() //La máquina elegirá un arma random entre 1 y 3
 
-                            //Switch-case del ganador entre las armas escogidas
-                            //Se llama a una función que determina el ganador y devuelve:
-                            // 0 para empate, 1 para victoria jugador, 2 para victoria máquina
+                            //Switch que declarará quien gana el punto o si es empate muestra un
+                            // mensaje indicandolo
                             when (ganador(eleccionJugador, eleccionMaquina)) {
                                 0 -> Toast
                                     .makeText(context, "Empate", Toast.LENGTH_SHORT)
                                     .show()
 
-                                1 -> puntosMaquina += 1 //La maquina suma 1 punto
-                                2 -> puntosJugador += 1 //El jugador suma 1 punto
+                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
                             }
                         }
                 )
