@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,16 +34,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.piedrapapeltijerasjc.ui.theme.PiedraPapelTijerasJCTheme
+import com.example.piedrapapeltijerasjc.ui.theme.Pink40
+import com.example.piedrapapeltijerasjc.ui.theme.Pink80
+import com.example.piedrapapeltijerasjc.ui.theme.Purple80
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             PiedraPapelTijerasJCTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     GameScreen()
                 }
@@ -87,183 +91,184 @@ fun GameScreen(modifier: Modifier = Modifier) {
     //Creamos un contexto para el Toast de empate
     val context = LocalContext.current
 
-    Surface {
-        Column(
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Purple80),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        //Botones de la maquina
+        Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(20.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Top
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.piedra),
+                contentDescription = "piedra",
+                Modifier
+                    .size(70.dp)
+                    .rotate(180F)
+            )
+
+            Spacer(modifier = Modifier.width(50.dp))
+            Image(
+                painter = painterResource(id = R.drawable.papel),
+                contentDescription = "papel",
+                Modifier
+                    .size(70.dp)
+                    .rotate(180F)
+            )
+            Spacer(modifier = Modifier.width(50.dp))
+            Image(
+                painter = painterResource(id = R.drawable.tijeras),
+                contentDescription = "tijeras",
+                Modifier
+                    .size(80.dp)
+                    .rotate(90F)
+            )
+        }
+
+        //eleccion maquina
+
+        Image(
+            painter = painterResource(id = eleccionMaquina),
+            contentDescription = "Eleccion de la maquina",
+            Modifier
+                .rotate(180F)
+                .size(150.dp)
+
+        )
+
+        //Puntos de los jugadores
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            //Llamamos a la variable textoGanador para ajustar el texto final al ganador
+            val textoGanador = textoGanador(puntosJugador, puntosMaquina)
 
-            //Botones de la maquina
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.Top
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.piedra),
-                    contentDescription = "piedra",
-                    Modifier
-                        .size(70.dp)
-                        .rotate(180F)
+            if (continuarPartida(puntosJugador, puntosMaquina)) {
+                //Mostramos la puntuacion del jugador
+                Text(
+                    text = "Player score: ${puntosJugador}",
+                    fontSize = 30.sp
                 )
-
-                Spacer(modifier = Modifier.width(50.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.papel),
-                    contentDescription = "papel",
-                    Modifier
-                        .size(70.dp)
-                        .rotate(180F)
+                //Mostramos la puntuacion del ordenador
+                Text(
+                    text = "Computer score: ${puntosMaquina}",
+                    fontSize = 30.sp
                 )
-                Spacer(modifier = Modifier.width(50.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.tijeras),
-                    contentDescription = "tijeras",
-                    Modifier
-                        .size(80.dp)
-                        .rotate(90F)
+            } else {
+                Text(
+                    text = "Player score $puntosJugador" + "\n" +
+                            "Computer score: $puntosMaquina" + "\n" +
+                            "Ha ganado $textoGanador",
+                    fontSize = 30.sp
                 )
             }
 
-            //eleccion maquina
 
-            Image(
-                painter = painterResource(id = eleccionMaquina),
-                contentDescription = "Eleccion de la maquina",
+        }
+
+        //eleccion jugador
+
+        Image(
+            painter = painterResource(
+                id = eleccionJugador
+            ),
+            contentDescription = "Eleccion del jugador",
+            Modifier
+                .size(150.dp)
+        )
+
+        //Botones del jugador
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
+        ) {
+            Image(painter = painterResource(id = R.drawable.piedra),
+                contentDescription = "piedra",
                 Modifier
-                    .rotate(180F)
-                    .size(150.dp)
+                    .size(70.dp)
+                    .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
+                        eleccionJugador = 1
+                        eleccionMaquina =
+                            numeroRandom() //La máquina elegirá un arma random entre 1 y 3
 
+                        //Switch que declarará quien gana el punto o si es empate muestra un
+                        // mensaje indicandolo
+                        when (ganador(eleccionJugador, eleccionMaquina)) {
+                            0 -> Toast
+                                .makeText(context, "Empate", Toast.LENGTH_SHORT)
+                                .show()
+
+                            1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                            2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
+                        }
+                    }
             )
 
-            //Puntos de los jugadores
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                //Llamamos a la variable textoGanador para ajustar el texto final al ganador
-                val textoGanador = textoGanador(puntosJugador, puntosMaquina)
-
-                if (continuarPartida(puntosJugador, puntosMaquina)) {
-                    //Mostramos la puntuacion del jugador
-                    Text(
-                        text = "Player score: ${puntosJugador}",
-                        fontSize = 30.sp
-                    )
-                    //Mostramos la puntuacion del ordenador
-                    Text(
-                        text = "Computer score: ${puntosMaquina}",
-                        fontSize = 30.sp
-                    )
-                } else {
-                    Text(
-                        text = "Player score $puntosJugador" + "\n" +
-                                "Computer score: $puntosMaquina" + "\n" +
-                                "Ha ganado $textoGanador",
-                        fontSize = 30.sp
-                    )
-                }
-
-
-            }
-
-            //eleccion jugador
-
+            Spacer(modifier = Modifier.width(50.dp))
             Image(
-                painter = painterResource(
-                    id = eleccionJugador
-                ),
-                contentDescription = "Eleccion del jugador",
+                painter = painterResource(id = R.drawable.papel),
+                contentDescription = "papel",
                 Modifier
-                    .size(150.dp)
+                    .size(70.dp)
+                    .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
+                        eleccionJugador = 2
+                        eleccionMaquina =
+                            numeroRandom() //La máquina elegirá un arma random entre 1 y 3
+
+                        //Switch que declarará quien gana el punto o si es empate muestra un
+                        // mensaje indicandolo
+                        when (ganador(eleccionJugador, eleccionMaquina)) {
+                            0 -> Toast
+                                .makeText(context, "Empate", Toast.LENGTH_SHORT)
+                                .show()
+
+                            1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                            2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
+                        }
+                    }
             )
+            Spacer(modifier = Modifier.width(50.dp))
+            Image(
+                painter = painterResource(id = R.drawable.tijeras),
+                contentDescription = "tijeras",
+                Modifier
+                    .size(80.dp)
+                    .rotate(270F)
+                    .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
+                        eleccionJugador = 3
+                        eleccionMaquina =
+                            numeroRandom() //La máquina elegirá un arma random entre 1 y 3
 
-            //Botones del jugador
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Image(painter = painterResource(id = R.drawable.piedra),
-                    contentDescription = "piedra",
-                    Modifier
-                        .size(70.dp)
-                        .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
-                            eleccionJugador = 1
-                            eleccionMaquina =
-                                numeroRandom() //La máquina elegirá un arma random entre 1 y 3
+                        //Switch que declarará quien gana el punto o si es empate muestra un
+                        // mensaje indicandolo
+                        when (ganador(eleccionJugador, eleccionMaquina)) {
+                            0 -> Toast
+                                .makeText(context, "Empate", Toast.LENGTH_SHORT)
+                                .show()
 
-                            //Switch que declarará quien gana el punto o si es empate muestra un
-                            // mensaje indicandolo
-                            when (ganador(eleccionJugador, eleccionMaquina)) {
-                                0 -> Toast
-                                    .makeText(context, "Empate", Toast.LENGTH_SHORT)
-                                    .show()
-
-                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
-                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
-                            }
+                            1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
+                            2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
                         }
-                )
-
-                Spacer(modifier = Modifier.width(50.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.papel),
-                    contentDescription = "papel",
-                    Modifier
-                        .size(70.dp)
-                        .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
-                            eleccionJugador = 2
-                            eleccionMaquina =
-                                numeroRandom() //La máquina elegirá un arma random entre 1 y 3
-
-                            //Switch que declarará quien gana el punto o si es empate muestra un
-                            // mensaje indicandolo
-                            when (ganador(eleccionJugador, eleccionMaquina)) {
-                                0 -> Toast
-                                    .makeText(context, "Empate", Toast.LENGTH_SHORT)
-                                    .show()
-
-                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
-                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
-                            }
-                        }
-                )
-                Spacer(modifier = Modifier.width(50.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.tijeras),
-                    contentDescription = "tijeras",
-                    Modifier
-                        .size(80.dp)
-                        .rotate(270F)
-                        .clickable(enabled = continuarPartida(puntosJugador, puntosMaquina)) {
-                            eleccionJugador = 3
-                            eleccionMaquina =
-                                numeroRandom() //La máquina elegirá un arma random entre 1 y 3
-
-                            //Switch que declarará quien gana el punto o si es empate muestra un
-                            // mensaje indicandolo
-                            when (ganador(eleccionJugador, eleccionMaquina)) {
-                                0 -> Toast
-                                    .makeText(context, "Empate", Toast.LENGTH_SHORT)
-                                    .show()
-
-                                1 -> puntosMaquina += 1 //Gana la máquina y le sumamos 1 a sus puntos
-                                2 -> puntosJugador += 1 //Gana el jugador y le sumamos 1 a sus puntos
-                            }
-                        }
-                )
-            }
+                    }
+            )
         }
     }
-
-
-
-
 }
+
 
 /**
  *  Función que determina si se sigue juagndo la partida o no. Cuando la maquina o el jugador
