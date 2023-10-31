@@ -157,12 +157,8 @@ fun GameScreen(modifier: Modifier = Modifier) {
             if (continuarPartida(puntosJugador, puntosMaquina)) {
                 //Mostramos la puntuacion del jugador
                 Text(
-                    text = "Player score: ${puntosJugador}",
-                    fontSize = 30.sp
-                )
-                //Mostramos la puntuacion del ordenador
-                Text(
-                    text = "Computer score: ${puntosMaquina}",
+                    text = "Player score $puntosJugador" + "\n" +
+                            "Computer score: $puntosMaquina",
                     fontSize = 30.sp
                 )
             } else {
