@@ -66,6 +66,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Función que utilizamos para poder navegar entre las diferentes pantallas
+ */
 @Composable
 fun ScreenNav(){
     val navController = rememberNavController()
@@ -81,7 +84,9 @@ fun ScreenNav(){
     }
 }
 
-
+/**
+ * Función donde creamos el layout del login
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
@@ -91,7 +96,6 @@ fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     Column(
         modifier = Modifier
-            .background(Purple80)
             .padding(10.dp)
             .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -140,7 +144,7 @@ fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
 
 
 /**
- * Función donde creamos el layout que vamos a mostrar por pantalla y creamos las funciones
+ * Función donde creamos el layout del juego de piedra, papel o tijeras y creamos las funciones
  * principales del mismo
  */
 @Composable
