@@ -13,13 +13,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,13 +34,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.piedrapapeltijerasjc.ui.theme.PiedraPapelTijerasJCTheme
-import com.example.piedrapapeltijerasjc.ui.theme.Pink40
-import com.example.piedrapapeltijerasjc.ui.theme.Pink80
 import com.example.piedrapapeltijerasjc.ui.theme.Purple80
 
 class MainActivity : ComponentActivity() {
@@ -48,24 +59,92 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    GameScreen()
+                    ScreenNav()
                 }
             }
         }
     }
 }
 
+@Composable
+fun ScreenNav(){
+    val navController = rememberNavController()
 
-fun numeroRandom(): Int {
-    return (1..3).random()
+    NavHost(navController = navController, startDestination = "login_screen" ){
+
+        composable("login_screen"){
+            LoginScreen(navController = navController)
+        }
+        composable("game_screen"){
+            GameScreen(navController = navController)
+        }
+    }
 }
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
+
+    var username by remember { mutableStateOf(TextFieldValue("")) }
+    var password by remember { mutableStateOf(TextFieldValue("")) }
+
+    Column(
+        modifier = Modifier
+            .background(Purple80)
+            .padding(10.dp)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Image(
+            painter = painterResource(id = R.drawable.this_is_fine),
+            contentDescription = "this is fine",
+            Modifier.height(200.dp)
+        )
+
+        TextField(
+            value = username,
+            onValueChange = {
+                username = it
+            },
+            placeholder = { Text(text = "Nombre de usurio") },
+            modifier = Modifier.padding(10.dp)
+        )
+
+        TextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            placeholder = { Text(text = "Contraseña") },
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        )
+
+        Button(
+            onClick = {
+                navController.navigate("game_screen")
+            },
+            colors = ButtonDefaults.buttonColors(Color(255, 165, 0, 255)),
+            modifier = Modifier.padding(10.dp)
+
+        ) {
+            Text(text = "Log in")
+        }
+
+
+    }
+}
+
 
 /**
  * Función donde creamos el layout que vamos a mostrar por pantalla y creamos las funciones
  * principales del mismo
  */
 @Composable
-fun GameScreen(modifier: Modifier = Modifier) {
+fun GameScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     //Creamos las variables donde guardaremos los puntos de los jugadores y las elecciones de
     //jugador y de la maquina
@@ -266,6 +345,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
 }
 
 
+
 /**
  *  Función que determina si se sigue juagndo la partida o no. Cuando la maquina o el jugador
  *  llegue a 5 se acabrá la partida
@@ -280,6 +360,11 @@ fun continuarPartida(puntosJug: Int, puntosMaq: Int): Boolean {
     return siguenJugando
 }
 
+
+
+fun numeroRandom(): Int {
+    return (1..3).random()
+}
 
 /**
  * Función que recine por parámetros las elecciones tanto del jugador como de la máquina
@@ -338,6 +423,10 @@ fun textoGanador(puntosJug: Int, puntosMaq: Int): String {
 @Composable
 fun GamePreview() {
     PiedraPapelTijerasJCTheme {
-        GameScreen()
+        ScreenNav()
     }
 }
+
+
+
+
