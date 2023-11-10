@@ -48,6 +48,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.piedrapapeltijerasjc.ui.theme.PiedraPapelTijerasJCTheme
 import com.example.piedrapapeltijerasjc.ui.theme.Purple80
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +85,44 @@ fun ScreenNav(){
     }
 }
 
+
+/**
+ * Función que comprueba si el nickName introducido ya existe en la badat; y si no,
+ * crea un nuevo  jugador.
+ */
+fun nuevoJugador (entity: PlayerEntity, dao: PlayerDao, nombre: String) {
+
+    //runBlocking es una corrutina que separa la ejecución de la app
+    //de la interacción con la base de datos
+
+    runBlocking {
+        //LLamamos a la tabla.
+        val puntuaciones=dao.getNicks()
+
+        var existe= false //Variable que comprueba si el nombre ya existe
+
+        //Recorremos la tabla y si los nombres no coinciden, crea un usuario nuevo.
+        for (puntuacion in puntuaciones) {
+            if (puntuacion.nickname==entity.nickname) {
+                existe=true
+            }
+        }
+
+        //Creamos un usuario nuevo.
+        if (!existe) {
+
+            entity.nickname= nombre
+            entity.partidasJugadas=1
+            entity.partidasGanadas=0
+
+            dao.addPlayer(entity)
+        }else{
+            entity.partidasJugadas++
+        }
+    }
+}
+
+
 /**
  * Función donde creamos el layout del login
  */
@@ -97,7 +136,8 @@ fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
     Column(
         modifier = Modifier
             .padding(10.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(Purple80),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -356,7 +396,7 @@ fun GameScreen(modifier: Modifier = Modifier, navController: NavController) {
  */
 fun continuarPartida(puntosJug: Int, puntosMaq: Int): Boolean {
     var siguenJugando = true
-    //Si el jugador o la máquina llegan a 3 puntos
+    //Si el jugador o la máquina llegan a 5 puntos
     if (puntosMaq >= 5 || puntosJug >= 5) {
         //Termina la partida
         siguenJugando = false
@@ -415,6 +455,8 @@ fun textoGanador(puntosJug: Int, puntosMaq: Int): String {
     var texto = ""
     if (puntosJug > puntosMaq) {
         texto = "el jugador"
+
+        //Todo: Hacer un update que añada un punto a partidas ganadas
     } else {
         texto = "la máquina"
     }

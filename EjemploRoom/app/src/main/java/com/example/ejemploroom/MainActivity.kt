@@ -16,12 +16,12 @@ import kotlinx.coroutines.runBlocking
 class MainActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: TasksAdapter
-    lateinit var tasks: MutableList<TaskEntity>
+    lateinit var tasksList: MutableList<TaskEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tasks = ArrayList()         // Se prepara la lista
+        tasksList = ArrayList()         // Se prepara la lista
         getTasks()                  // Se carga la lista de tareas a través del DAO
         findViewById<Button>(R.id.btnAddTask).setOnClickListener {
             addTask(TaskEntity(name = findViewById<EditText>(R.id.etTask).text.toString()))
@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
     fun getTasks() =
         runBlocking {       // Corrutina que saca de la base de datos la lista de tareas
             launch {                        // Inicio del hilo
-                tasks =
+                tasksList =
                     MisNotasApp.database.taskDao().getAllTasks()    // Se carga la lista de tareas
-                setUpRecyclerView(tasks)        // se pasa la lista a la Vista
+                setUpRecyclerView(tasksList)        // se pasa la lista a la Vista
             }
         }
 
@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         launch {
             val id = MisNotasApp.database.taskDao().addTask(task)   // Inserta una tarea nueva
             val recoveryTask = MisNotasApp.database.taskDao().getTaskById(id)   // Recarga la lista
-            tasks.add(recoveryTask) // Añade al final de la lista, el nuevo
-            adapter.notifyItemInserted(tasks.size)  // El adaptador notifica que se ha insertado
+            tasksList.add(recoveryTask) // Añade al final de la lista, el nuevo
+            adapter.notifyItemInserted(tasksList.size)  // El adaptador notifica que se ha insertado
             clearFocus()        // Se elimina el texto del et ...
             hideKeyboard()      // y se oculta el teclado
         }
@@ -67,9 +67,9 @@ class MainActivity : AppCompatActivity() {
 
     fun deleteTask(task: TaskEntity) = runBlocking {
         launch {
-            val position = tasks.indexOf(task)  // Busca la posición de la tarea en la lista...
+            val position = tasksList.indexOf(task)  // Busca la posición de la tarea en la lista...
             MisNotasApp.database.taskDao().deleteTask(task) // ... y la borra de la base de datos.
-            tasks.remove(task)      // Finalmente, la elimina de la lista
+            tasksList.remove(task)      // Finalmente, la elimina de la lista
             adapter.notifyItemRemoved(position) // El adaptador notifica que se ha eliminado la tarea
         }
     }

@@ -14,16 +14,16 @@ interface ContactDao {
 
     //Función que devuelve todos los contactos de la base de datos
     @Query("SELECT * FROM contactos")
-    fun getAllContacts() : LiveData<List<Contacts>>
+    suspend fun getAllContacts() : LiveData<List<Contacts>>
 
     //Función que inserta un nuevo contacto a la base de datos y que en caso de haber algún problema
     //reemplaza el contacto problemático con el nuevo
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertContact(contacts: Contacts)
+    suspend fun insertContact(contacts: Contacts)
 
     //Función que elimina un contacto de la base de datos
     @Delete
-    fun deleteContact(contacts: ContactsEntity)
+    suspend fun deleteContact(contacts: ContactsEntity)
 
 
 }

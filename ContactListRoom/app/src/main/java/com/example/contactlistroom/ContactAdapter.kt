@@ -10,9 +10,9 @@ import com.example.contactlistroom.databinding.ItemContactBinding
 import com.example.contactlistroom.entidades.ContactsEntity
 
 class ContactAdapter (
-    val listaContactos : List<ContactsEntity>,
+    val listaContactos : List<ContactsEntity>,  // Objeto Lista de contactos
     val context: Context
-) : RecyclerView.Adapter<ContactAdapter.ViewHolder>(){
+) : RecyclerView.Adapter<ContactAdapter.ViewHolder>(){  //Devuelve la vista
 
     //Clase ViewHolder
     class ViewHolder(val binding: ItemContactBinding) : RecyclerView.ViewHolder(binding.root){}
