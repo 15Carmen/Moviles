@@ -39,8 +39,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getTasks() =
-        runBlocking {       // Corrutina que saca de la base de datos la lista de tareas
-            launch {                        // Inicio del hilo
+        // Corrutina que saca de la base de datos la lista de tareas
+        runBlocking {
+            // Inicio del hilo
+            launch {
                 tasksList =
                     MisNotasApp.database.taskDao().getAllTasks()    // Se carga la lista de tareas
                 setUpRecyclerView(tasksList)        // se pasa la lista a la Vista

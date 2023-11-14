@@ -1,22 +1,24 @@
 package com.example.contactlistroom
 
-import android.provider.ContactsContract.Contacts
+import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
+import com.example.contactlistroom.entidades.ContactsEntity
 
-class ContactRepository (private val contactDao : ContactDao){
+class ContactRepository(val dao: ContactDao) {
 
-    //Función que muestra todos los contactos de la base de datos
-    fun getAllContacts() : LiveData<List<Contacts>> {
-        return contactDao.getAllContacts()
+    // function to get all contacts from the database
+    suspend fun getAllContacts() : LiveData<List<ContactsContract.Contacts>> {
+        return dao.getAllContacts()
     }
 
-    //Función que inserta un contacto en la base de datos
-    fun insertContact(contacts: Contacts){
-        contactDao.insertContact(contacts)
+    // function to insert a contact in the database
+    suspend fun insertContact(contact : ContactsEntity) {
+        dao.insertContact(contact)
     }
 
-    //Función que borra el contacto de la base de datos
-    fun deleteContact(contacts: Contacts){
-        contactDao.deleteContact(contacts)
+    // function to delete a contact from the database
+    suspend fun deleteContact(contact: ContactsEntity) {
+        dao.deleteContact(contact)
     }
+
 }

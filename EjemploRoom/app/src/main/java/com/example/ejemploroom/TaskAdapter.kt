@@ -14,45 +14,43 @@ class TasksAdapter(
     val deleteTask: (TaskEntity) -> Unit            // borrado de tarea
 ) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {    // Devuelve la vista
 
-    override fun onBindViewHolder(
-        holder: ViewHolder,
-        position: Int
-    ) {     // Muestra la vista (holder) y cada tarea de la lista (position)
-        val item =
-            tasks[position]                                         // Extrae la tarea de la lista
-        holder.bind(
-            item,
-            checkTask,
-            deleteTask
-        )                           // Muestra el item en la vista (ver más adelante)
+
+    // Muestra la vista (holder) y cada tarea de la lista (position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // Extrae la tarea de la lista
+        val item = tasks[position]
+
+        // Muestra el item en la vista (ver más adelante)
+        holder.bind(item, checkTask, deleteTask)
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {    // Contenedor de la vista (holder) y la posición de la tarea en la lista (position)
-        val layoutInflater =
-            LayoutInflater.from(parent.context)                       // Se instancia el Layout para la vista
-        return ViewHolder(
-            layoutInflater.inflate(
-                R.layout.item_task,
-                parent,
-                false
-            )
-        )   // Devuelve la vista inflando el layout del item
+    // Contenedor de la vista (holder) y la posición de la tarea en la lista (position)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+        // Se instancia el Layout para la vista
+        val layoutInflater = LayoutInflater.from(parent.context)
+
+        // Devuelve la vista inflando el layout del item
+        return ViewHolder(layoutInflater.inflate(R.layout.item_task, parent, false)
+        )
     }
 
     override fun getItemCount(): Int {
-        return tasks.size     // Devuelve el número de tareas de la lista
+        // Devuelve el número de tareas de la lista
+        return tasks.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {     // Clase con la vista
-        val tvTask =
-            view.findViewById<TextView>(R.id.tvTask)         // instancia del Textview de la vista
-        val cbIsDone =
-            view.findViewById<CheckBox>(R.id.cbIsDone)     // instancia del Checkbox de la vista
+    // Clase con la vista
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(                                   // función que une los elementos en la vista y prepara los listeners
+        // instancia del Textview de la vista
+        val tvTask = view.findViewById<TextView>(R.id.tvTask)
+
+        // instancia del Checkbox de la vista
+        val cbIsDone = view.findViewById<CheckBox>(R.id.cbIsDone)
+
+        // función que une los elementos en la vista y prepara los listeners
+        fun bind(
             task: TaskEntity,
             checkTask: (TaskEntity) -> Unit,
             deleteTask: (TaskEntity) -> Unit
