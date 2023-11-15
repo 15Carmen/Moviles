@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.a7ymediafirebase.app-mergeDebugResources-30:/layout/activity_juego.xml",
+        "source": "com.example.a7ymediafirebase.app-main-33:/layout/activity_juego.xml"
+    },
+    {
+        "merged": "com.example.a7ymediafirebase.app-mergeDebugResources-30:/layout/activity_main.xml",
+        "source": "com.example.a7ymediafirebase.app-main-33:/layout/activity_main.xml"
+    }
+]
