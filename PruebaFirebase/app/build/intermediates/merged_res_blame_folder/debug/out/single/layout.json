@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-mergeDebugResources-60:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-main-63:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-mergeDebugResources-60:\\layout\\fragment_add.xml",
+        "source": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-main-63:\\layout\\fragment_add.xml"
+    },
+    {
+        "merged": "com.example.pruebafirebase.app-mergeDebugResources-60:/layout/fragment_home.xml",
+        "source": "com.example.pruebafirebase.app-main-63:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-mergeDebugResources-60:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-main-63:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-mergeDebugResources-60:\\layout\\rv_contact_item.xml",
+        "source": "C:\\Users\\cmartin\\.gradle\\daemon\\8.0\\com.example.pruebafirebase.app-main-63:\\layout\\rv_contact_item.xml"
+    }
+]

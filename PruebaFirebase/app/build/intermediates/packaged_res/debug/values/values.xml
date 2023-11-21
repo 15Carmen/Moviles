@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">PruebaFirebase</string>
+    <string name="gcm_defaultSenderId" translatable="false">265958816013</string>
+    <string name="google_api_key" translatable="false">AIzaSyBbnUrnBOoV_q8JIJly7QKLfxc0SXoX2as</string>
+    <string name="google_app_id" translatable="false">1:265958816013:android:bb1b5462b0adebf38e9844</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBbnUrnBOoV_q8JIJly7QKLfxc0SXoX2as</string>
+    <string name="google_storage_bucket" translatable="false">pruebafirebase-28a4d.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="project_id" translatable="false">pruebafirebase-28a4d</string>
+    <style name="Base.Theme.PruebaFirebase" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.PruebaFirebase" parent="Base.Theme.PruebaFirebase"/>
+</resources>
