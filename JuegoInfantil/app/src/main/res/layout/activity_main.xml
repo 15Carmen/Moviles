@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/lobo"
+        android:layout_width="211dp"
+        android:layout_height="191dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lobo" />
+
+    <ImageView
+        android:id="@+id/gato"
+        android:layout_width="189dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/pato"
+        app:layout_constraintEnd_toStartOf="@+id/perro"
+        app:layout_constraintTop_toBottomOf="@+id/lobo"
+        app:layout_constraintVertical_bias="0.34"
+        app:srcCompat="@drawable/gato" />
+
+    <ImageView
+        android:id="@+id/pajaro"
+        android:layout_width="152dp"
+        android:layout_height="149dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pajaro" />
+
+    <ImageView
+        android:id="@+id/perro"
+        android:layout_width="199dp"
+        android:layout_height="209dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/pato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/perro" />
+
+    <ImageView
+        android:id="@+id/pato"
+        android:layout_width="211dp"
+        android:layout_height="194dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pato" />
+</androidx.constraintlayout.widget.ConstraintLayout>
