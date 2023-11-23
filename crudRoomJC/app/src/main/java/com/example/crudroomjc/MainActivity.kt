@@ -27,11 +27,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    //Construimos la base de datos
                     val database = Room.databaseBuilder(this, UsuariosDatabase::class.java, "db_usuarios").build()
+
+                    //Instanciamos el dao (data access object)
                     val dao = database.usuariosDao()
 
+                    //Instanciamos el viewModel y le pasamos el dao por parámetros
                     val viewModel = UsuariosViewModel(dao)
-                    
+
+                    //Llamamos al NavManager y le pasamos el vieModel por parámetros
                     NavManager(viewModel = viewModel)
                 }
             }
