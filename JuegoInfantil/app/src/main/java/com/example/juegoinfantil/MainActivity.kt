@@ -14,23 +14,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var imgPerro : ImageView? = null
     private var imgPato : ImageView? = null
     private var imgPajaro : ImageView? = null
-    private var mediaplayerGato : MediaPlayer? = null
-    private var mediaPlayerLobo : MediaPlayer? = null
-    private var mediaPlayerPerro : MediaPlayer? = null
-    private var mediaPlayerPato : MediaPlayer? = null
-    private var mediaPlayerPajaro : MediaPlayer? = null
+    private var mediaPlayer : MediaPlayer?=null
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        mediaplayerGato = MediaPlayer.create(this, R.raw.gato)
-        mediaPlayerLobo = MediaPlayer.create(this, R.raw.lobo)
-        mediaPlayerPerro = MediaPlayer.create(this, R.raw.perro)
-        mediaPlayerPato = MediaPlayer.create(this, R.raw.pato)
-        mediaPlayerPajaro = MediaPlayer.create(this, R.raw.pajaro)
 
         imgGato!!.setOnClickListener(this);
         imgLobo!!.setOnClickListener(this);
@@ -42,11 +33,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.getId()){
-            R.id.gato -> mediaplayerGato!!.start()
-            R.id.lobo -> mediaPlayerLobo!!.start()
-            R.id.perro -> mediaPlayerPerro!!.start()
-            R.id.pato -> mediaPlayerPato!!.start()
-            R.id.pajaro -> mediaPlayerPajaro!!.start()
+            R.id.gato -> {
+                mediaPlayer = MediaPlayer.create(this, R.raw.gato)
+                mediaPlayer!!.start()
+            }
+
+            R.id.lobo -> {
+                mediaPlayer = MediaPlayer.create(this, R.raw.lobo)
+                mediaPlayer!!.start()
+            }
+            R.id.perro -> {
+                mediaPlayer = MediaPlayer.create(this, R.raw.perro)
+                mediaPlayer!!.start()
+            }
+            R.id.pato -> {
+                mediaPlayer = MediaPlayer.create(this, R.raw.pato)
+                mediaPlayer!!.start()
+            }
+            R.id.pajaro -> {
+                mediaPlayer = MediaPlayer.create(this, R.raw.pajaro)
+                mediaPlayer!!.start()
+            }
 
         }
     }
