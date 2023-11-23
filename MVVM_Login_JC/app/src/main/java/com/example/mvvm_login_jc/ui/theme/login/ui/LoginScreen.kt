@@ -12,70 +12,92 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mvvm_login_jc.R
-
+import kotlinx.coroutines.launch
 
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(viewModel: LoginViewModel){
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)){
-        Login(Modifier.align(Alignment.Center))
+        Login(Modifier.align(Alignment.Center), viewModel)
     }
 }
 
 @Composable
-fun Login(modifier: Modifier) {
-    Column (modifier = modifier){
-        HeaderImage(
-            Modifier
-                .align(Alignment.CenterHorizontally)
-                .size(250.dp))
-        Spacer(modifier = Modifier.padding(16.dp))
-        EmailField()
-        Spacer(modifier = Modifier.padding(4.dp))
-        PasswordField()
-        Spacer(modifier = Modifier.padding(16.dp))
-        LoginButton()
+fun Login(modifier: Modifier, viewModel: LoginViewModel) {
+
+    val email :String by viewModel.email.observeAsState(initial = "")
+    val password :String by viewModel.password.observeAsState(initial="")
+    val loginEnable :Boolean by viewModel.loginEnable.observeAsState(initial = false)
+    val isLoading :Boolean by viewModel.isLoading.observeAsState(initial = false)
+    val corrutineScope = rememberCoroutineScope()
+
+    if (isLoading){
+        Box(Modifier.fillMaxSize()){
+            CircularProgressIndicator(Modifier.align(Alignment.Center))
+        }
+    }else{
+        Column (modifier = modifier){
+            HeaderImage(
+                Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .size(250.dp))
+            Spacer(modifier = Modifier.padding(16.dp))
+            EmailField(email, {viewModel.onLoginChanged(it, password)} )
+            Spacer(modifier = Modifier.padding(4.dp))
+            PasswordField(password, {viewModel.onLoginChanged(email, it)})
+            Spacer(modifier = Modifier.padding(16.dp))
+            LoginButton(loginEnable){
+                corrutineScope.launch { viewModel.onLoginSelected()
+                }
+            }
+        }
     }
+
+
 }
 
 @Composable
-fun LoginButton() {
-    Button(onClick = { /*TODO*/ }, modifier = Modifier
-        .fillMaxWidth()
-        .height(48.dp), colors = ButtonDefaults.buttonColors(
+fun LoginButton(loginEnable: Boolean, onLoginSelected: () -> Unit) {
+    Button(onClick = { onLoginSelected() },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp), colors = ButtonDefaults.buttonColors(
             containerColor = Color(0xFFFF5722),
-            disabledContainerColor = Color(0xFFFF9800),
+            disabledContainerColor = Color(0xFF2196F3),
             contentColor = Color.White,
-            disabledContentColor = Color.White
-
-    )) {
+            disabledContentColor = Color.White)
+    ) {
         Text(text = "Iniciar sesión")
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordField() {
+fun PasswordField(password: String, onTextFieldChanged: (String) -> Unit) {
 
+    //var password by remember { mutableStateOf("") }
     TextField(
-        value = "",
-        onValueChange = {},
+        value = password,
+        onValueChange = {onTextFieldChanged(it)},
         placeholder = { Text(text = "Contraseña")},
         modifier = Modifier.fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password), //para que cuando escribimos la contraseña aparezcan puntos en ves de las letras
@@ -90,13 +112,13 @@ fun PasswordField() {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun EmailField() {
+fun EmailField(email:String, onTextFieldChanged:(String) -> Unit) {
 
+    //var email by remember { mutableStateOf("") }
     TextField(
-        value = "",
-        onValueChange = {},
+        value = email,
+        onValueChange = {onTextFieldChanged(it)},
         modifier = Modifier.fillMaxWidth(),
         placeholder = {
             Text(text = "Email")
