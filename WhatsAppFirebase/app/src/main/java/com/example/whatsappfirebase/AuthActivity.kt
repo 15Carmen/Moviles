@@ -3,32 +3,41 @@ package com.example.whatsappfirebase
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.example.whatsappfirebase.databinding.ActivityAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthActivity : AppCompatActivity() {
 
-    val binding = ActivityAuthBinding.inflate(layoutInflater)
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var btnLogIn: Button
+    private lateinit var btnSignIn: Button
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-
         //Setup
-        setup()
+       setup()
     }
 
     private fun setup() {
         title = "Autenticación"
-        binding.btnSignIn.setOnClickListener {
-            if (binding.emailEditText.text.isNotEmpty() &&
-                binding.passwordEditText.text.isNotEmpty()){
+
+
+
+        btnSignIn.setOnClickListener {
+            if (emailEditText.text.isNotEmpty() &&
+                passwordEditText.text.isNotEmpty()){
 
                 FirebaseAuth.getInstance()
                     .createUserWithEmailAndPassword(
-                        binding.emailEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
+                        emailEditText.text.toString(),
+                        passwordEditText.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful){
                             showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
@@ -39,14 +48,14 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnLogIn.setOnClickListener {
-            if (binding.emailEditText.text.isNotEmpty() &&
-                binding.passwordEditText.text.isNotEmpty()){
+        btnLogIn.setOnClickListener {
+            if (emailEditText.text.isNotEmpty() &&
+                passwordEditText.text.isNotEmpty()){
 
                 FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(
-                        binding.emailEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
+                        emailEditText.text.toString(),
+                        passwordEditText.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful){
                             showHome(it.result?.user?.email ?: "", ProviderType.BASIC)

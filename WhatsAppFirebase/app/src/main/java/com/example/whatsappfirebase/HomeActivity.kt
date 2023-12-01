@@ -2,6 +2,8 @@ package com.example.whatsappfirebase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import com.example.whatsappfirebase.databinding.ActivityAuthBinding
 import com.example.whatsappfirebase.databinding.ActivityHomeBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -12,7 +14,9 @@ enum class ProviderType{
 
 class HomeActivity : AppCompatActivity() {
 
-    val binding = ActivityHomeBinding.inflate(layoutInflater)
+    private lateinit var emailTextView: TextView
+    private lateinit var providerTextView: TextView
+    private lateinit var btnLogOut:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -28,10 +32,10 @@ class HomeActivity : AppCompatActivity() {
     private fun setup(email: String, provider: String) {
 
         title = "Inicio"
-        binding.emailTextView.text = email
-        binding.providerTextView.text = provider
+        emailTextView.text = email
+        providerTextView.text = provider
 
-        binding.btnLogOut.setOnClickListener {
+        btnLogOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             onBackPressed()
         }
