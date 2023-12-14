@@ -8,5 +8,6 @@ data class ContactsEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     var nombre: String = "",
-    var tlf: String = ""
+    var tlf: String = "",
+    var image: String = ""
 )

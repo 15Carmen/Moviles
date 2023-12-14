@@ -11,10 +11,11 @@ import com.example.contactlistroom.entidades.ContactsEntity
 
 @Dao
 interface ContactDao {
+/*
 
     //Función que devuelve todos los contactos de la base de datos
     @Query("SELECT * FROM contactos")
-     fun getAllContacts() : LiveData<List<Contacts>>
+     fun getAllContacts() : MutableList<ContactsEntity>
 
     //Función que inserta un nuevo contacto a la base de datos y que en caso de haber algún problema
     //reemplaza el contacto problemático con el nuevo
@@ -23,7 +24,7 @@ interface ContactDao {
 
     //Función que elimina un contacto de la base de datos
     @Delete
-    suspend fun deleteContact(contacts: ContactsEntity)
+    suspend fun deleteContact(contacts: Contacts)
 
-
+*/
 }

@@ -6,8 +6,9 @@ import com.example.contactlistroom.entidades.ContactsEntity
 
 class ContactRepository(val dao: ContactDao) {
 
+    /*
     // function to get all contacts from the database
-    suspend fun getAllContacts() : LiveData<List<ContactsContract.Contacts>> {
+    fun getAllContacts() : MutableList<ContactsEntity> {
         return dao.getAllContacts()
     }
 
@@ -17,8 +18,11 @@ class ContactRepository(val dao: ContactDao) {
     }
 
     // function to delete a contact from the database
+    /*
     suspend fun deleteContact(contact: ContactsEntity) {
         dao.deleteContact(contact)
     }
+*/
 
+     */
 }

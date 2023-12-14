@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WhatssAppFirebase</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="label_sign_up">Sign Up</string>
+    <string name="label_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_have_account">I already have an account</string>
+    <string name="account_question">Do not have an account?</string>
+</resources>

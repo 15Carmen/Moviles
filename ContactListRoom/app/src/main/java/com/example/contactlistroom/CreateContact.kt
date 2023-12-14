@@ -12,6 +12,7 @@ import kotlinx.coroutines.runBlocking
 
 class CreateContact : AppCompatActivity(){
 
+    /*
     private lateinit var binding: CreateContactBinding
 
     val viewModel : ContactViewModel by viewModels()
@@ -39,5 +40,5 @@ class CreateContact : AppCompatActivity(){
 
         startActivity(Intent(this@CreateContact, MainActivity::class.java))
     }
-
+*/
 }

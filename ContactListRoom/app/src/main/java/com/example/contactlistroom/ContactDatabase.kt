@@ -8,6 +8,7 @@ import com.example.contactlistroom.entidades.ContactsEntity
 
 @Database(entities = [ContactsEntity::class], version = 1, exportSchema = false)
 abstract class ContactDatabase : RoomDatabase() {
+    /*
     abstract fun contactsDao(): ContactDao
 
 
@@ -32,4 +33,6 @@ abstract class ContactDatabase : RoomDatabase() {
             }
         }
     }
+
+     */
 }

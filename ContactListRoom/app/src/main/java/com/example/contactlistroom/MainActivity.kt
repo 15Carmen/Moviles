@@ -1,42 +1,41 @@
 package com.example.contactlistroom
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.contactlistroom.databinding.ActivityMainBinding
-import kotlinx.coroutines.runBlocking
+import androidx.recyclerview.widget.RecyclerView
+import com.example.contactlistroom.entidades.ContactsEntity
 
 class MainActivity : AppCompatActivity() {
 
-    // private variable to inflate the layout for the activity
-    private lateinit var binding: ActivityMainBinding
+    lateinit var mRecyclerView: RecyclerView
+    val mAdapter: ContactsAdapter = ContactsAdapter()
 
-    // variable to access the ViewModel class
-    val viewModel : ContactViewModel  by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // inflate the layout
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setUpRecyclerView()
 
-        // set onClickListener for the floating action button
-        binding.floatingActionButton.setOnClickListener{
-            val intent = Intent(this , CreateContact::class.java)
-            startActivity(intent)
-        }
+    }
 
-        viewModel.getAllContacts().observe(this , Observer {  listaContactos->
-            // set the layout manager and the adapter for the recycler view
-            binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-            binding.recyclerView.adapter = ContactsAdapter(this,listaContactos)
-        })
+    fun setUpRecyclerView(){
+        mRecyclerView = findViewById(R.id.recyclerView) as RecyclerView
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        mAdapter.ContactsAdapter(getSuperheros(), this)
+        mRecyclerView.adapter = mAdapter
+    }
 
+    fun getSuperheros(): MutableList<ContactsEntity>{
+        var contactosList:MutableList<ContactsEntity> = ArrayList()
 
+        contactosList.add(ContactsEntity(1, "Marvel", "Peter Parker", "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"))
+        contactosList.add(ContactsEntity(2, "Marvel", "Matthew Michael Murdock", "https://cursokotlin.com/wp-content/uploads/2017/07/daredevil.jpg"))
+        contactosList.add(ContactsEntity(3, "Marvel", "James Howlett", "https://cursokotlin.com/wp-content/uploads/2017/07/logan.jpeg"))
+        contactosList.add(ContactsEntity(4, "DC", "Bruce Wayne", "https://cursokotlin.com/wp-content/uploads/2017/07/batman.jpg"))
+        contactosList.add(ContactsEntity(5, "Marvel", "Thor Odinson", "https://cursokotlin.com/wp-content/uploads/2017/07/thor.jpg"))
 
+        return contactosList
     }
 
 }
