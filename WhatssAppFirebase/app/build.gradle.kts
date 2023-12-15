@@ -53,7 +53,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     //glide library
-    implementation("com.github.bumptech.glide:glide:4.9.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
