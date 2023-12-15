@@ -10,75 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8f08b88-e9e4-4396-8944-56f6c975db6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/Entidades/Configuracion.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/Entidades/Sancion.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/Entidades/Vehiculos.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/navigation/NavManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/room/DatabaseVehiculos.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/room/SancionDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/room/VehiculosDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/states/VehiculosState.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/viewmodels/VehiculosViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/views/DetalleView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/views/HomeView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/carmenmartin_examen1trimestre/views/ListaView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/androidTest/java/com/example/simondice/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/java/com/example/simondice/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/java/com/example/simondice/MenuFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/java/com/example/simondice/SimonListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/darkblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/darkgreen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/darkred.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/darkyellow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/green.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/color/yellow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/layout/fragment_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/app/src/test/java/com/example/simondice/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SimonDice/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../crudRoomJC/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JuegoInfantil/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JuegoInfantil/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../crudRoomJC/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../crudRoomJC/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../crudRoomJC/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../crudRoomJC/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/app/src/main/java/com/example/whatsappfirebase/AuthActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/app/src/main/java/com/example/whatsappfirebase/HomeActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WhatsAppFirebase/local.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,11 +48,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -125,14 +69,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.example.carmenmartin_examen1trimestre.viewmodels" />
