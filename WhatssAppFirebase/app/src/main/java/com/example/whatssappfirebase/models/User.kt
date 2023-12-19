@@ -1,3 +1,3 @@
 package com.example.whatssappfirebase.models
 
-data class User (val email: String, val userImage: String)
+data class User(val id: String = "", val nombre: String = "", val fotoPerfilUrl: String? = null)

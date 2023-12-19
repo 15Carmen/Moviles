@@ -4,6 +4,6 @@
     <color name="colorPrimary">#FF9800</color>
     <color name="colorPrimaryDark">#F44336</color>
     <color name="colorAccent">#2196F3</color>
-    <color name="colorEditTextBackGroud">#f5f5f5</color>
+    <color name="colorWhite">#f5f5f5</color>
     <color name="colorText">#302F2F</color>
 </resources>

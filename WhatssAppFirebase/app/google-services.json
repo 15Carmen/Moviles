@@ -1,102 +1,45 @@
 {
   "project_info": {
-    "project_number": "375955676679",
-    "project_id": "whatsappfirebase-8a5e7",
-    "storage_bucket": "whatsappfirebase-8a5e7.appspot.com"
+    "project_number": "795509700280",
+    "project_id": "erguasa-10e03",
+    "storage_bucket": "erguasa-10e03.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:375955676679:android:23d852cbdf86913103d4a2",
+        "mobilesdk_app_id": "1:795509700280:android:23285f5d5f2ee1d1eea64d",
         "android_client_info": {
-          "package_name": "com.example.michat"
+          "package_name": "com.example.erguasa"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "375955676679-sbl7nvh8eugrnh83k47o8q4qnkbk84pj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.michat",
-            "certificate_hash": "4a12032e819d7720dd528925241004e420c25abb"
-          }
-        },
-        {
-          "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBOhbYlJ-FFTiudShtVmqSpFr03UlAEV_8"
+          "current_key": "AIzaSyDuvuHWxE1aq0OKPPJti7o4iyL9zxu35rU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:375955676679:android:758270349811870003d4a2",
-        "android_client_info": {
-          "package_name": "com.example.whatsappfirebase"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBOhbYlJ-FFTiudShtVmqSpFr03UlAEV_8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:375955676679:android:e49db7df412488a203d4a2",
+        "mobilesdk_app_id": "1:795509700280:android:df04350edfee44eceea64d",
         "android_client_info": {
           "package_name": "com.example.whatssappfirebase"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBOhbYlJ-FFTiudShtVmqSpFr03UlAEV_8"
+          "current_key": "AIzaSyDuvuHWxE1aq0OKPPJti7o4iyL9zxu35rU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "375955676679-7lfbj6egl150gdhpcapg3g747du67kss.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

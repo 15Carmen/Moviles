@@ -8,6 +8,7 @@ android {
     namespace = "com.example.whatssappfirebase"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.whatssappfirebase"
         minSdk = 29
@@ -30,15 +31,16 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -48,13 +50,10 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
 
     //librería para poner la foto de usuario redonda
     implementation("de.hdodenhof:circleimageview:3.1.0")
-
-    //glide library
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
