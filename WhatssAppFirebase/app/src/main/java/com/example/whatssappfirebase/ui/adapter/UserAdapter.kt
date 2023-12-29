@@ -1,4 +1,4 @@
-package com.example.whatssappfirebase.adapter
+package com.example.whatssappfirebase.ui.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whatssappfirebase.R
-import com.example.whatssappfirebase.activity.ChatActivity
+import com.example.whatssappfirebase.ui.views.ChatActivity
 import com.example.whatssappfirebase.models.User
-import com.google.firebase.auth.FirebaseAuth
 
 class UserAdapter(val context: Context, val userList: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {

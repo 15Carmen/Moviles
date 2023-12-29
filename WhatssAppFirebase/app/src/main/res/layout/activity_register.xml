@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.LoginActivity">
+    tools:context=".ui.views.LoginActivity"
+    android:id="@+id/registerView">
 
 
 

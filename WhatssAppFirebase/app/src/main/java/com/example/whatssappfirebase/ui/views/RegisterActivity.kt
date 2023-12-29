@@ -1,4 +1,4 @@
-package com.example.whatssappfirebase.activity
+package com.example.whatssappfirebase.ui.views
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -9,15 +9,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whatssappfirebase.R
-import com.example.whatssappfirebase.models.User
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
-import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 class RegisterActivity : AppCompatActivity() {

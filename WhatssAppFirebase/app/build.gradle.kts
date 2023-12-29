@@ -45,6 +45,13 @@ android {
 
 dependencies {
 
+    //ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    //LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    //Activity
+    implementation("androidx.activity:activity-ktx:1.8.2")
+
     // dependencias firebase
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics")

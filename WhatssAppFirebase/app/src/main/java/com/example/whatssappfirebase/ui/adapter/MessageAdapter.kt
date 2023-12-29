@@ -1,4 +1,4 @@
-package com.example.whatssappfirebase.adapter
+package com.example.whatssappfirebase.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
